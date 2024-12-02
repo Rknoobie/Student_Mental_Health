@@ -23,3 +23,17 @@ print(df.describe())
 # Check for missing values in the dataframe
 print("\nMissing values in the dataframe:")
 print(df.isna().sum())
+
+# Wow. We have 1000 entries. No missing values. Data looks promissing, it would be interesting to know what features correlate with anxiety and depresion and to check, 
+# wheather anxiety and depression have negative effects on CGPA.
+
+## `Timestamp`
+
+g = sns.histplot(df, x='Timestamp', discrete=True)
+g.set(title='Timestamp histogram')
+xticks = g.get_xticks()
+xticks_labels = g.get_xticklabels()
+g.tick_params(axis='x', labelrotation=45);
+plt.show()
+
+# Hm. We observe strange peaks at certain dates. Probably these are days when dataset's owner published it somewhere.
