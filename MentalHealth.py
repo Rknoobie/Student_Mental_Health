@@ -37,3 +37,29 @@ g.tick_params(axis='x', labelrotation=45);
 plt.show()
 
 # Hm. We observe strange peaks at certain dates. Probably these are days when dataset's owner published it somewhere.
+
+## `Gender`
+
+sns.countplot(df, x='Gender').set(title='Gender ratio');
+plt.show()
+
+# Wow. Many women took part in the survey, significantly more than men. That's interesting. We will check later the same ratios for different courses.
+
+## `Age`
+
+sns.countplot(df, x='Age').set(title='Students of different ages in data');
+
+# Nice. Dataset is slightly unballanced, but we have enough samples for ages from 18 to 25 years old. Let's check wheather gender ratio varies significantly for any age group.
+
+sns.countplot(df, x='Age', hue='Gender').set(title='Students of different ages and genders in data');
+
+# We observe no suspicious gender disbalance for any age group.
+
+## `Course`
+
+df.Course.value_counts()
+
+# Okay, we have lot's of different courses here. Let's visualise only the most popular ones.
+
+sns.countplot(df[df.Course.apply(lambda x: df.Course.value_counts()[x] > 16)], x='Course').set(title='Most popular courses in data');
+plt.show()
